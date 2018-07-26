@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/VeriumReserve/verium.svg?branch=master)](https://travis-ci.org/VeriumReserve/verium) Ubuntu Server Xenial 16.04
 
 Verium official development tree
 
