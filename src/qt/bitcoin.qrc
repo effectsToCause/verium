@@ -81,6 +81,7 @@
     </qresource>
     <qresource prefix="/movies">
         <file alias="miningonMovie">res/movies/miningon.gif</file>
+        <file alias="syncingMovie">res/movies/syncingMovie.gif</file>
     </qresource>
     <qresource prefix="/images">
         <file alias="askPassphraseBackground">res/images/askpassphrasepage-background.png</file>

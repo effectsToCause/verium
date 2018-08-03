@@ -282,6 +282,8 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     statusBar()->addWidget(progressBar);
     statusBar()->addPermanentWidget(frameBlocks);
 
+    syncingIconMovie = new QMovie(":/movies/syncingMovie", "gif", this);
+
     QTimer *timerNumBlocks = new QTimer(this);
     connect(timerNumBlocks, SIGNAL(timeout()), this, SLOT(timerCheckForBlocks()));
     timerNumBlocks->start(30 * 1000);
@@ -802,7 +804,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
     int lastBlock = clientModel->getNumBlocksOfPeers();
     int secs = lastBlockDate.secsTo(QDateTime::currentDateTime());
     int totalHours = GenBlockDate.daysTo(QDateTime::currentDateTime())*24;
-    int currentHour = totalHours - (secs/(60*60));
+    int currentHour = (totalHours - (secs/(60*60)))-1;
     // Represent time from last generated block in human readable text
     if(secs <= 0)
     {
@@ -833,6 +835,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         labelBlocksIcon->setPixmap(QIcon(":/icons/staking_off").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
         overviewPage->showOutOfSyncWarning(false);
         progressBar->setVisible(false);
+        syncingIconMovie->stop();
     }
     else
     {
@@ -840,7 +843,7 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
 
         if (strStatusBarWarnings.isEmpty())
         {
-            progressBar->setFormat(tr("Synchronizing with Network (%1%)").arg(nPercentageDone, 0, 'f', 1));
+            progressBar->setFormat(tr("Synchronizing with Network (%1%)").arg(nPercentageDone, 0, 'f', 2));
             progressBar->setMaximum(totalHours);
             progressBar->setValue(currentHour);
             progressBar->setVisible(true);
@@ -848,7 +851,8 @@ void BitcoinGUI::setNumBlocks(int count, int nTotalBlocks)
         labelBlocksIcon->show();
         tooltip = tr("Syncing") + QString(".\n") + tr("Downloaded %1 blocks of transaction history (%2% done).").arg(count).arg(nPercentageDone, 0, 'f', 1);
         labelBlocksIcon->setPixmap(QIcon(":/icons/notsynced").pixmap(STATUSBAR_ICONSIZE, STATUSBAR_ICONSIZE));
-
+        labelBlocksIcon->setMovie(syncingIconMovie);
+        syncingIconMovie->start();
         overviewPage->showOutOfSyncWarning(true);
     }
 
