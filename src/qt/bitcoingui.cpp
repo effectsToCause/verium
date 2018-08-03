@@ -96,7 +96,6 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
     lockWalletAction(0),
     unlockWalletAction(0),
     encryptWalletAction(0),
-    aboutQtAction(0),
     trayIcon(0),
     notificator(0),
     rpcConsole(0)
@@ -349,7 +348,7 @@ void BitcoinGUI::lockWalletFeatures(bool lock)
     {
         gotoOverviewPage();
 
-        QSettings settings("Verium", "Verium-Qt");
+        QSettings settings("Verium", "Verium");
         restoreGeometry(settings.value("geometry").toByteArray());
         restoreState(settings.value("windowState").toByteArray());
 
@@ -425,9 +424,6 @@ void BitcoinGUI::createActions()
     aboutPostAction = new QAction(QIcon(":/icons/PoSTicon"), tr("&About PoWT"), this);
     aboutPostAction->setToolTip(tr("Show information about PoWT protocol"));
     aboutPostAction->setMenuRole(QAction::AboutRole);
-    aboutQtAction = new QAction(QIcon(":icons/about-qt"), tr("About &Qt"), this);
-    aboutQtAction->setToolTip(tr("Show information about Qt"));
-    aboutQtAction->setMenuRole(QAction::AboutQtRole);
     optionsAction = new QAction(QIcon(":/icons/options"), tr("&Options"), this);
     optionsAction->setToolTip(tr("Modify configuration options for Verium"));
     optionsAction->setMenuRole(QAction::PreferencesRole);
@@ -465,7 +461,6 @@ void BitcoinGUI::createActions()
     connect(logoutAction, SIGNAL(triggered()), this, SLOT(logout()));
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
     connect(aboutPostAction, SIGNAL(triggered()), this, SLOT(aboutPostClicked()));
-    connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
     connect(toggleHideAction, SIGNAL(triggered()), this, SLOT(toggleHidden()));
     connect(backupWalletAction, SIGNAL(triggered()), this, SLOT(backupWallet()));
@@ -532,7 +527,6 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutPostAction);
-    help->addAction(aboutQtAction);
 }
 
 void BitcoinGUI::createToolBars()
@@ -903,7 +897,7 @@ void BitcoinGUI::changeEvent(QEvent *e)
 
 void BitcoinGUI::exitApp()
 {
-    QSettings settings("Verium", "Verium-Qt");
+    QSettings settings("Verium", "Verium");
     settings.setValue("geometry", saveGeometry());
     settings.setValue("windowState", saveState());
 
@@ -1254,7 +1248,7 @@ void BitcoinGUI::exportPrivKey()
         if (!address.SetString(strAddress))
         {
             QMessageBox::warning(this, tr("Export Private Key"),
-                tr("This is an invalid VeriCoin address"),
+                tr("This is an invalid Verium address"),
                 QMessageBox::Ok, QMessageBox::Ok);
             return;
         }
@@ -1279,7 +1273,7 @@ void BitcoinGUI::exportPrivKey()
         std::string privkey = CBitcoinSecret(vchSecret, fCompressed).ToString();
         QString qprivkey = QString::fromStdString(privkey);
         QMessageBox::warning(this, tr("Export Private Key"),
-            tr("This is the private key:\n%1 \n\nAssociated with this VeriCoin address: \n%2\n\nCopy to secure location, this allows access to coins.").arg(qprivkey).arg(qstrAddress),
+            tr("This is the private key:\n%1 \n\nAssociated with this Verium address: \n%2\n\nCopy to secure location, this allows access to coins.").arg(qprivkey).arg(qstrAddress),
             QMessageBox::Ok, QMessageBox::Ok);
         vchSecret.clear(), privkey.clear(), qprivkey.clear(); //ensure memory is cleared once ok is pressed
     }

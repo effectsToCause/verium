@@ -158,9 +158,9 @@ int main(int argc, char *argv[])
     app.setOrganizationName("Verium");
     //XXX app.setOrganizationDomain("");
     if(GetBoolArg("-testnet")) // Separate UI settings for testnet
-        app.setApplicationName("Verium-Qt-testnet");
+        app.setApplicationName("Verium-testnet");
     else
-        app.setApplicationName("Verium-Qt");
+        app.setApplicationName("Verium");
 
     // ... then GUI settings:
     OptionsModel optionsModel;
