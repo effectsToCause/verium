@@ -2,6 +2,7 @@
 #define OVERVIEWPAGE_H
 
 #include <QWidget>
+#include <QMovie>
 #include <QNetworkReply>
 
 QT_BEGIN_NAMESPACE
@@ -49,6 +50,7 @@ private:
     qint64 currentBalance;
     qint64 currentUnconfirmedBalance;
     qint64 currentImmatureBalance;
+    QMovie *miningMovie;
 
     TxViewDelegate *txdelegate;
     TransactionFilterProxy *filter;

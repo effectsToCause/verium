@@ -79,6 +79,9 @@
         <file alias="miningoff">res/icons/miningoff.png</file>
         <file alias="miningon">res/icons/miningon.png</file>
     </qresource>
+    <qresource prefix="/movies">
+        <file alias="miningonMovie">res/movies/miningon.gif</file>
+    </qresource>
     <qresource prefix="/images">
         <file alias="askPassphraseBackground">res/images/askpassphrasepage-background.png</file>
         <file alias="post">res/images/post.png</file>

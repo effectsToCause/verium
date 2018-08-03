@@ -194,12 +194,22 @@ OverviewPage::OverviewPage(QWidget *parent) :
     showOutOfSyncWarning(true);
 
     // set initial state of mining button
+    miningMovie = new QMovie(":/movies/miningonMovie", "gif", this);
+
+    connect(miningMovie, &QMovie::frameChanged, [this](int frame) {
+      if(mining)
+        ui->mineButton->setIcon(QIcon(miningMovie->currentPixmap()));
+    });
+
+    // if movie doesn't loop forever, force it to.
+    if (miningMovie->loopCount() != -1)
+        connect(miningMovie, SIGNAL(finished()), miningMovie, SLOT(start()));
+
     if (mining)
     {
-        ui->mineButton->setIcon(QIcon(":/icons/miningon"));
+        miningMovie->start();
         ui->miningLabel->setText("Click to stop:");
-    }
-    else{
+    } else {
         ui->mineButton->setIcon(QIcon(":/icons/miningoff"));
         ui->miningLabel->setText("Click to start:");
     }
@@ -369,21 +379,19 @@ void OverviewPage::on_mineButton_clicked()
     }
 
     // toggle mining
-    bool onOrOff;
     if (!mining)
     {
-        onOrOff = true;
-        mining = onOrOff;
+        mining = true;
         ui->miningLabel->setText("Click to stop:");
-        ui->mineButton->setIcon(QIcon(":/icons/miningon"));
+        miningMovie->start();
         MilliSleep(100);
-        GenerateVerium(onOrOff, pwalletMain);
+        GenerateVerium(true, pwalletMain);
     }
     else
     {
-        onOrOff = false;
-        GenerateVerium(onOrOff, pwalletMain);
-        mining = onOrOff;
+        miningMovie->stop();
+        GenerateVerium(false, pwalletMain);
+        mining = false;
         ui->miningLabel->setText("Click to start:");
         ui->mineButton->setIcon(QIcon(":/icons/miningoff"));
     }
@@ -394,6 +402,7 @@ void OverviewPage::on_spinBox_valueChanged(int procs)
     if (mining)
     {
         bool onOrOff = false;
+        miningMovie->stop();
         GenerateVerium(onOrOff, pwalletMain);
         mining = onOrOff;
         ui->miningLabel->setText("Click to start:");
