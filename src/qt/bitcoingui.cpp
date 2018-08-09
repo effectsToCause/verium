@@ -108,7 +108,7 @@ BitcoinGUI::BitcoinGUI(QWidget *parent):
         GUIUtil::refactorGUI(screenSize);
     }
     setMinimumSize(WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT);
-    setMaximumSize(WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT);
+    //setMaximumSize(WINDOW_MIN_WIDTH, WINDOW_MIN_HEIGHT);
     resizeGUI();
     setGeometry(QStyle::alignedRect(Qt::LeftToRight, Qt::AlignCenter, size(), screenSize));
 
@@ -1440,7 +1440,7 @@ void BitcoinGUI::reloadBlockchainActionEnabled(bool enabled)
 void BitcoinGUI::reloadBlockchain(bool autoReload)
 {
     boost::filesystem::path pathBootstrap(GetDataDir() / "bootstrap_VRM.zip");
-    QUrl url(QString(walletDownloadsUrl).append("bootstrap_VRM.zip"));
+    QUrl url(QString(bootstrapDownloadsUrl).append("bootstrap_VRM.zip"));
 
     // Don't auto-bootstrap if the file has already been downloaded, unless the wallet is being encrypted.
     if (boost::filesystem::exists(pathBootstrap) && autoReload && !fEncrypt)

@@ -145,6 +145,8 @@ extern std::map<std::string, std::vector<std::string> > mapMultiArgs;
 #ifdef QT_GUI
 extern const char *walletUrl;
 extern const char *walletDownloadsUrl;
+extern const char *updateDownloadsUrl;
+extern const char *bootstrapDownloadsUrl;
 extern const char *forumsUrl;
 extern bool fRestart;
 extern bool fRescan;

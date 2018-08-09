@@ -246,8 +246,6 @@ int main(int argc, char *argv[])
                 ClientModel clientModel(&optionsModel);
                 WalletModel walletModel(pwalletMain, &optionsModel);
 
-                ReadVersionFile();
-
                 window.setClientModel(&clientModel);
                 window.setWalletModel(&walletModel);
 
@@ -263,6 +261,7 @@ int main(int argc, char *argv[])
 
                 // Place this here as guiref has to be defined if we don't want to lose URIs
                 ipcInit(argc, argv);
+                ReadVersionFile();
 
                 // Heirarchical order for special events and first runs:
                 // 1. Bootstrap wallet and restart

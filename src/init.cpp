@@ -1077,8 +1077,8 @@ bool AppInit2()
         GenerateVerium(GetBoolArg("-gen", false), pwalletMain);
     // ********************************************************* Step 12: finished
 
-    uiInterface.InitMessage(_("Done loading"));
-    printf("Done loading\n");
+    uiInterface.InitMessage(_("Loading..."));
+    printf("loading...\n");
 
     if (!strErrors.str().empty())
         return InitError(strErrors.str());
