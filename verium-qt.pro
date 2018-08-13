@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = verium-qt
+TARGET = Verium
 VERSION = 1.2
 INCLUDEPATH += src src/json src/qt
 DEFINES += QT_GUI BOOST_THREAD_USE_LIB BOOST_SPIRIT_THREADSAFE __STDC_FORMAT_MACROS __STDC_LIMIT_MACROS
@@ -47,21 +47,20 @@ LIBS += $$UNWIND_LIB_PATH $$PROFILER_LIB_PATH
 
 # win build dependencies
 windows {
-  lessThan(QT_VERSION, 5.4) {
-  BOOST_LIB_SUFFIX=-mgw48-mt-s-1_55
-  } else {
-  BOOST_LIB_SUFFIX=-mgw49-mt-s-1_57
-  }
-BOOST_INCLUDE_PATH=C:/deps/boost_1_57_0
-BOOST_LIB_PATH=C:/deps/boost_1_57_0/stage/lib
-BDB_INCLUDE_PATH=C:/deps/db-4.8.30.NC/build_unix
-BDB_LIB_PATH=C:/deps/db-4.8.30.NC/build_unix
-OPENSSL_INCLUDE_PATH=C:/deps/openssl-1.0.1l/include
-OPENSSL_LIB_PATH=C:/deps/openssl-1.0.1l
-MINIUPNPC_INCLUDE_PATH=C:/deps
-MINIUPNPC_LIB_PATH=C:/deps/miniupnpc
-QRENCODE_INCLUDE_PATH=C:/deps/qrencode-3.4.4
-QRENCODE_LIB_PATH=C:/deps/qrencode-3.4.4/.libs
+DEPS_PATH=C:/Users/VericoinVerium/Desktop/deps
+QMAKE_CXXFLAGS += -fpermissive
+
+BOOST_LIB_SUFFIX=-mgw73-mt-s-1_59
+BOOST_INCLUDE_PATH=$$DEPS_PATH/boost_1_59_0
+BOOST_LIB_PATH=$$DEPS_PATH/boost_1_59_0/stage/lib
+BDB_INCLUDE_PATH=$$DEPS_PATH/db-4.8.30.NC/build_unix
+BDB_LIB_PATH=$$DEPS_PATH/db-4.8.30.NC/build_unix
+OPENSSL_INCLUDE_PATH=$$DEPS_PATH/openssl-1.0.2o_x64/dist/include
+OPENSSL_LIB_PATH=$$DEPS_PATH/openssl-1.0.2o_x64/dist/lib
+MINIUPNPC_INCLUDE_PATH=$$DEPS_PATH
+MINIUPNPC_LIB_PATH=$$DEPS_PATH/miniupnpc
+QRENCODE_INCLUDE_PATH=$$DEPS_PATH/qrencode-4.0.2
+QRENCODE_LIB_PATH=$$DEPS_PATH/qrencode-4.0.2/.libs
 }
 
 unix: contains(TARGET_BIT, m32) {
@@ -102,14 +101,14 @@ contains(RELEASE, 1) {
 
 !windows {
 # for extra security against potential buffer overflows: enable GCCs Stack Smashing Protection
-QMAKE_CXXFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
-QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1 -Wl,-rpath,./libs
+#QMAKE_CXXFLAGS *= -fstack-protector-all --param ssp-buffer-size=1
+#QMAKE_LFLAGS *= -fstack-protector-all --param ssp-buffer-size=1 -Wl,-rpath,./libs
 # We need to exclude this for Windows cross compile with MinGW 4.2.x, as it will result in a non-working executable!
 # This can be enabled for Windows, when we switch to MinGW >= 4.4.x.
 }
 # for extra security on Windows: enable ASLR and DEP via GCC linker flags
-windows:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat -Wl, -static
-windows:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
+#windows:QMAKE_LFLAGS *= -Wl,--dynamicbase -Wl,--nxcompat -Wl, -static
+#windows:QMAKE_LFLAGS += -static-libgcc -static-libstdc++
 
 # use: qmake "USE_QRCODE=1"
 # libqrencode (http://fukuchi.org/works/qrencode/index.en.html) must be installed for support

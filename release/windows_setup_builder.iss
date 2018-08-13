@@ -12,13 +12,13 @@
 #define ProgramName "Verium"
 
 ; Enter the Version Number of your binaries
-#define VersionNumber "1.1.0"
+#define VersionNumber "1.2"
 
 ; Enter the Name of the Folder created in \Appdata\Roaming where your binaries will place the user files, including wallet, conf file, blockchain info etc.
 #define RoamingName "Verium"
 
 ; Enter the Name of the main QT-File
-#define QTexe "verium-qt.exe"
+#define QTexe "Verium.exe"
 
 ; Subfolder with additional files such as an extra folder for daemon
 ; Do not include \ symbol it will be added later
@@ -33,7 +33,7 @@ AppPublisher=VeriCoin
 AppPublisherURL=http://www.vericoin.info/
 AppName={#ProgramName}
 AppVersion={#VersionNumber}
-DefaultDirName={pf32}\{#ProgramName}
+DefaultDirName={pf64}\{#ProgramName}
 DefaultGroupName={#ProgramName}
 UninstallDisplayIcon={app}\{#QTexe}
 Compression=lzma2
@@ -46,6 +46,12 @@ Name: "fonts";
 [Files]
 Source: "*.exe"; DestDir: "{app}"; Components: main; Excludes: "*.iss"
 Source: "*.dll"; DestDir: "{app}"; Components: main; Excludes: "*.iss" 
+Source: "bearer\*.dll"; DestDir: "{app}\bearer"; Components: main;
+Source: "iconengines\*.dll"; DestDir: "{app}\iconengines"; Components: main;
+Source: "imageformats\*.dll"; DestDir: "{app}\imageformats"; Components: main;
+Source: "platforms\*.dll"; DestDir: "{app}\platforms"; Components: main;
+Source: "styles\*.dll"; DestDir: "{app}\styles"; Components: main;
+Source: "translations\*.qm"; DestDir: "{app}\translations"; Components: main;
 Source: "fonts\*.ttf"; DestDir: "{app}\fonts"; Components: main;
 Source: {#configfile}; DestDir: "{userappdata}\{#RoamingName}"; Components: config; Flags: uninsneveruninstall
 Source: "fonts\Lato-Regular.TTF"; DestDir: "{fonts}"; FontInstall: "Lato"; Flags: onlyifdoesntexist uninsneveruninstall
@@ -78,7 +84,7 @@ begin
       Targetfile := ExpandConstant('{app}\wallet.dat');
       if not FileExists(Targetfile) then 
         begin
-          if MsgBox('No Wallet has been found. Would you like to import an existing wallet? If not a new wallet will be created once {#ProgramName} is started.',mbConfirmation,MB_YESNO) = IDYES then
+          if MsgBox('No Wallet has been found. Would you like to import an existing wallet? If not a wallet will be created once {#ProgramName} is started.',mbConfirmation,MB_YESNO) = IDYES then
             begin
               ImportWalletFileName := '';
               if GetOpenFileName('', ImportWalletFileName, '', 'wallet files (*.dat)|*.dat|All Files|*.*', 'dat') then
