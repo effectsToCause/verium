@@ -38,8 +38,8 @@
       <widget class="QPushButton" name="forumButton">
        <property name="minimumSize">
         <size>
-         <width>300</width>
-         <height>50</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -50,7 +50,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -62,8 +62,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>24</width>
-         <height>24</height>
+         <width>20</width>
+         <height>20</height>
         </size>
        </property>
        <property name="flat">
@@ -75,8 +75,8 @@
       <widget class="QPushButton" name="siteButton">
        <property name="minimumSize">
         <size>
-         <width>300</width>
-         <height>50</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -87,7 +87,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -99,8 +99,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>20</width>
+         <height>20</height>
         </size>
        </property>
        <property name="flat">
@@ -112,8 +112,8 @@
       <widget class="QPushButton" name="chatButton">
        <property name="minimumSize">
         <size>
-         <width>300</width>
-         <height>50</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -124,7 +124,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="layoutDirection">
@@ -139,8 +139,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>24</width>
+         <height>24</height>
         </size>
        </property>
        <property name="flat">
@@ -152,8 +152,8 @@
       <widget class="QPushButton" name="explorerButton">
        <property name="minimumSize">
         <size>
-         <width>300</width>
-         <height>50</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
        <property name="maximumSize">
@@ -164,7 +164,7 @@
        </property>
        <property name="font">
         <font>
-         <pointsize>24</pointsize>
+         <pointsize>10</pointsize>
         </font>
        </property>
        <property name="text">
@@ -176,8 +176,8 @@
        </property>
        <property name="iconSize">
         <size>
-         <width>32</width>
-         <height>32</height>
+         <width>24</width>
+         <height>24</height>
         </size>
        </property>
        <property name="flat">
@@ -200,7 +200,7 @@
         <string/>
        </property>
        <property name="pixmap">
-        <pixmap resource="../bitcoin.qrc">:/icons/miningon</pixmap>
+        <pixmap>:/icons/miningon</pixmap>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -309,14 +309,14 @@
      <item row="3" column="1">
       <widget class="QLabel" name="explorerText">
        <property name="text">
-        <string>Explore the full blockchain database including all transactions since genesis.</string>
+        <string>Explore the full blockchain including all transactions since genesis.</string>
        </property>
       </widget>
      </item>
      <item row="7" column="1">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>Chat with the developers, community, miners and get answers to your questions.</string>
+        <string>Chat with the developers, community, miners, get answers to your questions.</string>
        </property>
       </widget>
      </item>
@@ -330,7 +330,7 @@
      <item row="11" column="1">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>Stay up to date with news, wallet updates, media and learn more about Verium.</string>
+        <string>Stay up to date with news, updates, and learn more about Verium.</string>
        </property>
       </widget>
      </item>
