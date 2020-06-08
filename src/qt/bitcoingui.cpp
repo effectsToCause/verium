@@ -9,6 +9,7 @@
 #include <qt/createwalletdialog.h>
 #include <qt/guiconstants.h>
 #include <qt/guiutil.h>
+#include <qt/loginoverlay.h>
 #include <qt/modaloverlay.h>
 #include <qt/networkstyle.h>
 #include <qt/notificator.h>
@@ -247,13 +248,14 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty
     connect(labelProxyIcon, &GUIUtil::ClickableLabel::clicked, [this] {
         openOptionsDialogWithTab(OptionsDialog::TAB_NETWORK);
     });
-
+    loginOverlay = new LoginOverlay(this->centralWidget()->layout()->itemAt(1)->widget());
     modalOverlay = new ModalOverlay(this->centralWidget()->layout()->itemAt(1)->widget());
 #ifdef ENABLE_WALLET
     if(enableWallet) {
         connect(walletFrame, &WalletFrame::requestedSyncWarningInfo, this, &BitcoinGUI::showModalOverlay);
         connect(labelBlocksIcon, &GUIUtil::ClickableLabel::clicked, this, &BitcoinGUI::showModalOverlay);
         connect(progressBar, &GUIUtil::ClickableProgressBar::clicked, this, &BitcoinGUI::showModalOverlay);
+        loginOverlay->showHide();
     }
 #endif
 
@@ -1520,6 +1522,12 @@ void BitcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
     {
         trayIcon->setVisible(!fHideTrayIcon);
     }
+}
+
+void BitcoinGUI::showLoginOverlay()
+{
+    if (loginOverlay)
+        loginOverlay->toggleVisibility();
 }
 
 void BitcoinGUI::showModalOverlay()

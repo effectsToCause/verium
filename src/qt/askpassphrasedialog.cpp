@@ -17,6 +17,9 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QTextStream>
+#include <QFile>
+#include <QDataStream>
 
 AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureString* passphrase_out) :
     QDialog(parent),
@@ -27,7 +30,6 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
     m_passphrase_out(passphrase_out)
 {
     ui->setupUi(this);
-
     ui->passEdit1->setMinimumSize(ui->passEdit1->sizeHint());
     ui->passEdit2->setMinimumSize(ui->passEdit2->sizeHint());
     ui->passEdit3->setMinimumSize(ui->passEdit3->sizeHint());
@@ -75,6 +77,17 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
     connect(ui->passEdit1, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
     connect(ui->passEdit2, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
     connect(ui->passEdit3, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
+
+    // apply style
+    // XXX: Use local path for development
+    // XXX: To remove before for release
+    QString strPath(QCoreApplication::applicationDirPath() + "/res/style.qss");
+    QFile f(strPath);
+    //QFile f(":/style");
+    f.open(QFile::ReadOnly | QFile::Text);
+    QTextStream ts(&f);
+    setStyleSheet(ts.readAll());
+    f.close();
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()
