@@ -91,7 +91,10 @@ public:
     void removeWallet(WalletModel* walletModel);
     void removeAllWallets();
     bool loggedIn = false;
+<<<<<<< HEAD
 
+=======
+>>>>>>> QT: add login overlay
 #endif // ENABLE_WALLET
     bool enableWallet = false;
 
