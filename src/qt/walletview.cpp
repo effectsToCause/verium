@@ -298,6 +298,19 @@ void WalletView::unlockWallet()
     }
 }
 
+bool WalletView::walletLogin()
+{
+    if(walletModel){
+        if(!loggedIn){
+            WalletModel::UnlockContext ctx(walletModel->requestUnlock());
+            if(ctx.isValid()){
+                loggedIn = true;
+            }
+        }
+    }
+    return loggedIn;
+}
+
 void WalletView::usedSendingAddresses()
 {
     if(!walletModel)

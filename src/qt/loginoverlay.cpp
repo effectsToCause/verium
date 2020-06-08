@@ -13,7 +13,6 @@ layerIsVisible(false),
 userClosed(false)
 {
     ui->setupUi(this);
-    connect(ui->closeButton, &QPushButton::clicked, this, &LoginOverlay::closeClicked);
     if (parent) {
         parent->installEventFilter(this);
         raise();
@@ -80,10 +79,4 @@ void LoginOverlay::showHide(bool hide, bool userRequested)
     animation->setEasingCurve(QEasingCurve::OutQuad);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
     layerIsVisible = !hide;
-}
-
-void LoginOverlay::closeClicked()
-{
-    showHide(true);
-    userClosed = true;
 }

@@ -116,7 +116,6 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty
 
     // Make it frameless, we will handle minimize and co by ourself
     setWindowFlags(Qt::FramelessWindowHint);
-
     // Import Font for some view
     QFontDatabase::addApplicationFont(":/fonts/Lato-Regular");
     QFontDatabase::addApplicationFont(":/fonts/Lato-Light");
@@ -248,14 +247,16 @@ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const PlatformStyle *_platformSty
     connect(labelProxyIcon, &GUIUtil::ClickableLabel::clicked, [this] {
         openOptionsDialogWithTab(OptionsDialog::TAB_NETWORK);
     });
-    loginOverlay = new LoginOverlay(this->centralWidget()->layout()->itemAt(1)->widget());
     modalOverlay = new ModalOverlay(this->centralWidget()->layout()->itemAt(1)->widget());
+
 #ifdef ENABLE_WALLET
     if(enableWallet) {
         connect(walletFrame, &WalletFrame::requestedSyncWarningInfo, this, &BitcoinGUI::showModalOverlay);
         connect(labelBlocksIcon, &GUIUtil::ClickableLabel::clicked, this, &BitcoinGUI::showModalOverlay);
         connect(progressBar, &GUIUtil::ClickableProgressBar::clicked, this, &BitcoinGUI::showModalOverlay);
-        loginOverlay->showHide();
+
+        // Add login screen if wallet enabled
+        loginOverlay = new LoginOverlay(this->centralWidget()->layout()->itemAt(1)->widget());
     }
 #endif
 
@@ -989,7 +990,8 @@ void BitcoinGUI::openClicked()
 void BitcoinGUI::gotoOverviewPage()
 {
     overviewAction->setChecked(true);
-    if (walletFrame) walletFrame->gotoOverviewPage();
+    if (walletFrame)
+        walletFrame->gotoOverviewPage();
 }
 
 void BitcoinGUI::gotoHistoryPage()
@@ -1526,8 +1528,14 @@ void BitcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
 
 void BitcoinGUI::showLoginOverlay()
 {
-    if (loginOverlay)
+    if (loginOverlay){
         loginOverlay->toggleVisibility();
+        if(walletFrame){
+            if(walletFrame->walletLogin()){
+                loginOverlay->toggleVisibility();
+            }
+        }
+    }
 }
 
 void BitcoinGUI::showModalOverlay()
