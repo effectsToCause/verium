@@ -90,11 +90,15 @@ public:
     void addWallet(WalletModel* walletModel);
     void removeWallet(WalletModel* walletModel);
     void removeAllWallets();
+<<<<<<< HEAD
     bool loggedIn = false;
 <<<<<<< HEAD
 
 =======
 >>>>>>> QT: add login overlay
+=======
+
+>>>>>>> QT: require password to access wallet
 #endif // ENABLE_WALLET
     bool enableWallet = false;
 

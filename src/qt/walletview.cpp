@@ -302,6 +302,7 @@ bool WalletView::walletLogin()
 {
     if(walletModel){
         if(!loggedIn){
+<<<<<<< HEAD
             if (walletModel->getEncryptionStatus() == WalletModel::Locked){
                 WalletModel::UnlockContext ctx(walletModel->requestUnlock());
                 if(ctx.isValid()){
@@ -313,6 +314,10 @@ bool WalletView::walletLogin()
                 dlg.setModel(walletModel);
                 dlg.exec();
                 updateEncryptionStatus();
+=======
+            WalletModel::UnlockContext ctx(walletModel->requestUnlock());
+            if(ctx.isValid()){
+>>>>>>> QT: require password to access wallet
                 loggedIn = true;
             }
         }

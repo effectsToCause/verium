@@ -359,7 +359,11 @@ void BitcoinApplication::initializeResult(bool success)
 
 #ifdef ENABLE_WALLET
         // Require wallet login to access tabs
+<<<<<<< HEAD
         window->walletLogin();
+=======
+        window->showLoginOverlay();
+>>>>>>> QT: require password to access wallet
 
         // Now that initialization/startup is done, process any command-line
         // bitcoin: URIs or payment requests:

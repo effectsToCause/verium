@@ -13,7 +13,10 @@ layerIsVisible(true),
 userClosed(false)
 {
     ui->setupUi(this);
+<<<<<<< HEAD
     setWindowFlags(Qt::WindowStaysOnTopHint);
+=======
+>>>>>>> QT: require password to access wallet
     if (parent) {
         parent->installEventFilter(this);
         raise();
@@ -80,4 +83,8 @@ void LoginOverlay::showHide(bool hide, bool userRequested)
     animation->setEasingCurve(QEasingCurve::OutQuad);
     animation->start(QAbstractAnimation::DeleteWhenStopped);
     layerIsVisible = !hide;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> QT: require password to access wallet
