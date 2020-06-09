@@ -132,7 +132,7 @@ void WalletView::setWalletModel(WalletModel *_walletModel)
 
     // Put transaction list in tabs
     transactionView->setModel(_walletModel);
-    overviewPage->setWalletModel(_walletModel);
+    setWalletModel(_walletModel);
     receiveCoinsPage->setModel(_walletModel);
     sendCoinsPage->setModel(_walletModel);
     usedReceivingAddressesPage->setModel(_walletModel ? _walletModel->getAddressTableModel() : nullptr);
