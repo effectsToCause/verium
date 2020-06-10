@@ -19,7 +19,6 @@
 #include <QPushButton>
 #include <QTextStream>
 #include <QFile>
-#include <QDataStream>
 
 AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureString* passphrase_out) :
     QDialog(parent),

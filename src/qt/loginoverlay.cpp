@@ -5,6 +5,8 @@
 
 #include <QResizeEvent>
 #include <QPropertyAnimation>
+#include <QTextStream>
+#include <QFile>
 
 LoginOverlay::LoginOverlay(QWidget *parent) :
 QWidget(parent),
@@ -14,14 +16,31 @@ userClosed(false)
 {
     ui->setupUi(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
     setWindowFlags(Qt::WindowStaysOnTopHint);
 =======
 >>>>>>> QT: require password to access wallet
+=======
+    setWindowFlags(Qt::WindowStaysOnTopHint);
+>>>>>>> QT: style the overlays and askpassphrasedialog
     if (parent) {
         parent->installEventFilter(this);
         raise();
     }
     setVisible(true);
+<<<<<<< HEAD
+=======
+    // apply style
+    // XXX: Use local path for development
+    // XXX: To remove before for release
+    QString strPath(QCoreApplication::applicationDirPath() + "/res/style.qss");
+    QFile f(strPath);
+    //QFile f(":/style");
+    f.open(QFile::ReadOnly | QFile::Text);
+    QTextStream ts(&f);
+    setStyleSheet(ts.readAll());
+    f.close();
+>>>>>>> QT: style the overlays and askpassphrasedialog
 }
 
 LoginOverlay::~LoginOverlay()

@@ -91,8 +91,12 @@ public:
     void removeWallet(WalletModel* walletModel);
     void removeAllWallets();
 <<<<<<< HEAD
+<<<<<<< HEAD
     bool loggedIn = false;
 <<<<<<< HEAD
+=======
+    bool loggedIn = false;
+>>>>>>> QT: style the overlays and askpassphrasedialog
 
 =======
 >>>>>>> QT: add login overlay

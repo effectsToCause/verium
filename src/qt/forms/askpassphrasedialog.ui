@@ -30,6 +30,7 @@
     <enum>QLayout::SetMinimumSize</enum>
    </property>
    <item>
+<<<<<<< HEAD
     <widget class="QLabel" name="veriumIcon">
     <property name="minimumSize">
       <size>
@@ -48,6 +49,32 @@
     </property>
     </widget>
    </item>
+=======
+    <widget class="QPushButton" name="veriumIcon">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+     <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+        <normaloff>:/icons/verium</normaloff>
+        <disabledoff>:/icons/verium</disabledoff>:/icons/verium
+      </iconset>
+    </property>
+     <property name="iconSize">
+      <size>
+        <width>64</width>
+        <height>64</height>
+      </size>
+     </property>
+     <property name="flat">
+    <bool>true</bool>
+    </property>
+    </widget>
+    </item>
+>>>>>>> QT: style the overlays and askpassphrasedialog
    <item>
     <widget class="QLabel" name="warningLabel">
      <property name="text">

@@ -330,6 +330,7 @@ QLabel#explorerDescription, QLabel#twitterDescription, QLabel#chatDescription, Q
 }
 
 /** Overlays **/
+<<<<<<< HEAD
 QWidget#bgWidget {
     background: rgba(67,138,201,235);
 }
@@ -354,4 +355,14 @@ QMessageBox {
 QMessageBox QLabel{
     color: #46505A;
     font: 11pt "Lato";
+=======
+QWidget#bgWidget{
+    background: rgba(67,138,201,240);
+}
+
+/** Ask passphrase Dialog **/
+QDialog#AskPassphraseDialog{
+    border-radius: 5px;
+    background-color: white;
+>>>>>>> QT: style the overlays and askpassphrasedialog
 }

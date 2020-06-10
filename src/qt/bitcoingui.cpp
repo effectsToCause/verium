@@ -1529,11 +1529,15 @@ void BitcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
 void BitcoinGUI::walletLogin()
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> QT: style the overlays and askpassphrasedialog
     if (loginOverlay && walletFrame){
         modalOverlay->showHide(true, true);
         if(walletFrame->walletLogin()){
             loginOverlay->toggleVisibility();
             loggedIn = true;
+<<<<<<< HEAD
 =======
     if (loginOverlay){
         loginOverlay->toggleVisibility();
@@ -1542,6 +1546,8 @@ void BitcoinGUI::walletLogin()
                 loginOverlay->toggleVisibility();
             }
 >>>>>>> QT: require password to access wallet
+=======
+>>>>>>> QT: style the overlays and askpassphrasedialog
         }
     }
 }
