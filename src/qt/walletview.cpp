@@ -302,8 +302,17 @@ bool WalletView::walletLogin()
 {
     if(walletModel){
         if(!loggedIn){
-            WalletModel::UnlockContext ctx(walletModel->requestUnlock());
-            if(ctx.isValid()){
+            if (walletModel->getEncryptionStatus() == WalletModel::Locked){
+                WalletModel::UnlockContext ctx(walletModel->requestUnlock());
+                if(ctx.isValid()){
+                    loggedIn = true;
+                }
+            }
+            if (walletModel->getEncryptionStatus() == WalletModel::Unencrypted){
+                AskPassphraseDialog dlg(true ? AskPassphraseDialog::Encrypt : AskPassphraseDialog::Decrypt, this);
+                dlg.setModel(walletModel);
+                dlg.exec();
+                updateEncryptionStatus();
                 loggedIn = true;
             }
         }
