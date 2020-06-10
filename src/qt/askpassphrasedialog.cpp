@@ -17,8 +17,6 @@
 #include <QKeyEvent>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QTextStream>
-#include <QFile>
 
 AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureString* passphrase_out) :
     QDialog(parent),
@@ -79,6 +77,7 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
     connect(ui->passEdit3, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
      ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
      ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
@@ -97,6 +96,11 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
     setStyleSheet(ts.readAll());
     f.close();
 >>>>>>> QT: add encryption dialog on new wallet and format UI styles
+=======
+    // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
+     ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
+     ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
+>>>>>>> QT: cleanup wallet login implementation
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()

@@ -5,8 +5,6 @@
 
 #include <QResizeEvent>
 #include <QPropertyAnimation>
-#include <QTextStream>
-#include <QFile>
 
 LoginOverlay::LoginOverlay(QWidget *parent) :
 QWidget(parent),
@@ -29,6 +27,7 @@ userClosed(false)
     }
     setVisible(true);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     // apply style
     // XXX: Use local path for development
@@ -41,6 +40,8 @@ userClosed(false)
     setStyleSheet(ts.readAll());
     f.close();
 >>>>>>> QT: style the overlays and askpassphrasedialog
+=======
+>>>>>>> QT: cleanup wallet login implementation
 }
 
 LoginOverlay::~LoginOverlay()
