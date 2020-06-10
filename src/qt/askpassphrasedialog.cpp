@@ -78,9 +78,25 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
     connect(ui->passEdit2, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
     connect(ui->passEdit3, &QLineEdit::textChanged, this, &AskPassphraseDialog::textChanged);
 
+<<<<<<< HEAD
     // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
      ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
      ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
+=======
+    // apply style
+    // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
+     ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
+     ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
+    // XXX: Use local path for development
+    // XXX: To remove before for release
+    QString strPath(QCoreApplication::applicationDirPath() + "/res/style.qss");
+    QFile f(strPath);
+    //QFile f(":/style");
+    f.open(QFile::ReadOnly | QFile::Text);
+    QTextStream ts(&f);
+    setStyleSheet(ts.readAll());
+    f.close();
+>>>>>>> QT: add encryption dialog on new wallet and format UI styles
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()
