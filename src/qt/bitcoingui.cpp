@@ -1185,7 +1185,7 @@ void BitcoinGUI::setNumBlocks(int count, const QDateTime& blockDate, double nVer
         if(walletFrame)
         {
             walletFrame->showOutOfSyncWarning(true);
-            modalOverlay->showHide();
+            if (loggedIn){modalOverlay->showHide();}
         }
 #endif // ENABLE_WALLET
 
@@ -1526,14 +1526,13 @@ void BitcoinGUI::setTrayIconVisible(bool fHideTrayIcon)
     }
 }
 
-void BitcoinGUI::showLoginOverlay()
+void BitcoinGUI::walletLogin()
 {
-    if (loginOverlay){
-        loginOverlay->toggleVisibility();
-        if(walletFrame){
-            if(walletFrame->walletLogin()){
-                loginOverlay->toggleVisibility();
-            }
+    if (loginOverlay && walletFrame){
+        modalOverlay->showHide(true, true);
+        if(walletFrame->walletLogin()){
+            loginOverlay->toggleVisibility();
+            loggedIn = true;
         }
     }
 }

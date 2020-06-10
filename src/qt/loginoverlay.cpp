@@ -5,19 +5,32 @@
 
 #include <QResizeEvent>
 #include <QPropertyAnimation>
+#include <QTextStream>
+#include <QFile>
 
 LoginOverlay::LoginOverlay(QWidget *parent) :
 QWidget(parent),
 ui(new Ui::LoginOverlay),
-layerIsVisible(false),
+layerIsVisible(true),
 userClosed(false)
 {
     ui->setupUi(this);
+    setWindowFlags(Qt::WindowStaysOnTopHint);
     if (parent) {
         parent->installEventFilter(this);
         raise();
     }
-    setVisible(false);
+    setVisible(true);
+    // apply style
+    // XXX: Use local path for development
+    // XXX: To remove before for release
+    QString strPath(QCoreApplication::applicationDirPath() + "/res/style.qss");
+    QFile f(strPath);
+    //QFile f(":/style");
+    f.open(QFile::ReadOnly | QFile::Text);
+    QTextStream ts(&f);
+    setStyleSheet(ts.readAll());
+    f.close();
 }
 
 LoginOverlay::~LoginOverlay()
@@ -73,7 +86,7 @@ void LoginOverlay::showHide(bool hide, bool userRequested)
     setGeometry(0, hide ? 0 : height(), width(), height());
 
     QPropertyAnimation* animation = new QPropertyAnimation(this, "pos");
-    animation->setDuration(300);
+    animation->setDuration(400);
     animation->setStartValue(QPoint(0, hide ? 0 : this->height()));
     animation->setEndValue(QPoint(0, hide ? this->height() : 0));
     animation->setEasingCurve(QEasingCurve::OutQuad);

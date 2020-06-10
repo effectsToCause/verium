@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>598</width>
-    <height>222</height>
+    <height>0</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -29,6 +29,31 @@
    <property name="sizeConstraint">
     <enum>QLayout::SetMinimumSize</enum>
    </property>
+   <item>
+    <widget class="QPushButton" name="veriumIcon">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+     <property name="text">
+     <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+        <normaloff>:/icons/verium</normaloff>
+        <disabledoff>:/icons/verium</disabledoff>:/icons/verium
+      </iconset>
+    </property>
+     <property name="iconSize">
+      <size>
+        <width>64</width>
+        <height>64</height>
+      </size>
+     </property>
+     <property name="flat">
+    <bool>true</bool>
+    </property>
+    </widget>
+    </item>
    <item>
     <widget class="QLabel" name="warningLabel">
      <property name="text">

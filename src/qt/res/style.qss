@@ -290,3 +290,14 @@ QLabel#explorerDescription, QLabel#twitterDescription, QLabel#chatDescription, Q
     color: white;
     font: 10pt "Lato Bold";
 }
+
+/** Overlays **/
+QWidget#bgWidget{
+    background: rgba(67,138,201,240);
+}
+
+/** Ask passphrase Dialog **/
+QDialog#AskPassphraseDialog{
+    border-radius: 5px;
+    background-color: white;
+}

@@ -359,7 +359,7 @@ void BitcoinApplication::initializeResult(bool success)
 
 #ifdef ENABLE_WALLET
         // Require wallet login to access tabs
-        window->showLoginOverlay();
+        window->walletLogin();
 
         // Now that initialization/startup is done, process any command-line
         // bitcoin: URIs or payment requests:
