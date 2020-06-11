@@ -78,6 +78,7 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
      ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
      ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
@@ -101,6 +102,11 @@ AskPassphraseDialog::AskPassphraseDialog(Mode _mode, QWidget *parent, SecureStri
      ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
      ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
 >>>>>>> QT: cleanup wallet login implementation
+=======
+    // haven't figured out how to discriminate buttons in QDialogButtonBox in style.qss yet
+     ui->buttonBox->button(QDialogButtonBox::Ok)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #418bca; color: white; font: 10pt Lato;font-weight: bold;"));
+     ui->buttonBox->button(QDialogButtonBox::Cancel)->setStyleSheet(QString("border: no; border-radius: 3px; height: 25px; width: 75px; padding: 5px 10px; background-color: #e93a5d; color: white; font: 10pt Lato;font-weight: bold;"));
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
 }
 
 AskPassphraseDialog::~AskPassphraseDialog()

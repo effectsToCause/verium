@@ -92,6 +92,7 @@ public:
     void removeAllWallets();
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     bool loggedIn = false;
 <<<<<<< HEAD
 =======
@@ -103,6 +104,10 @@ public:
 =======
 
 >>>>>>> QT: require password to access wallet
+=======
+    bool loggedIn = false;
+
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
 #endif // ENABLE_WALLET
     bool enableWallet = false;
 

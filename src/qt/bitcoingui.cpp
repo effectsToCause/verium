@@ -1530,13 +1530,17 @@ void BitcoinGUI::walletLogin()
 {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> QT: style the overlays and askpassphrasedialog
+=======
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
     if (loginOverlay && walletFrame){
         modalOverlay->showHide(true, true);
         if(walletFrame->walletLogin()){
             loginOverlay->toggleVisibility();
             loggedIn = true;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
     if (loginOverlay){
@@ -1548,6 +1552,8 @@ void BitcoinGUI::walletLogin()
 >>>>>>> QT: require password to access wallet
 =======
 >>>>>>> QT: style the overlays and askpassphrasedialog
+=======
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
         }
     }
 }

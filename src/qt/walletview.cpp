@@ -304,8 +304,11 @@ bool WalletView::walletLogin()
         if(!loggedIn){
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> QT: add encryption dialog on new wallet and format UI styles
+=======
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
             if (walletModel->getEncryptionStatus() == WalletModel::Locked){
                 WalletModel::UnlockContext ctx(walletModel->requestUnlock());
                 if(ctx.isValid()){
@@ -318,12 +321,15 @@ bool WalletView::walletLogin()
                 dlg.exec();
                 updateEncryptionStatus();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
             WalletModel::UnlockContext ctx(walletModel->requestUnlock());
             if(ctx.isValid()){
 >>>>>>> QT: require password to access wallet
 =======
 >>>>>>> QT: add encryption dialog on new wallet and format UI styles
+=======
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
                 loggedIn = true;
             }
         }

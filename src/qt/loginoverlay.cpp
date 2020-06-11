@@ -15,17 +15,22 @@ userClosed(false)
     ui->setupUi(this);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     setWindowFlags(Qt::WindowStaysOnTopHint);
 =======
 >>>>>>> QT: require password to access wallet
 =======
     setWindowFlags(Qt::WindowStaysOnTopHint);
 >>>>>>> QT: style the overlays and askpassphrasedialog
+=======
+    setWindowFlags(Qt::WindowStaysOnTopHint);
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
     if (parent) {
         parent->installEventFilter(this);
         raise();
     }
     setVisible(true);
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 =======
@@ -42,6 +47,8 @@ userClosed(false)
 >>>>>>> QT: style the overlays and askpassphrasedialog
 =======
 >>>>>>> QT: cleanup wallet login implementation
+=======
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
 }
 
 LoginOverlay::~LoginOverlay()
@@ -104,7 +111,11 @@ void LoginOverlay::showHide(bool hide, bool userRequested)
     animation->start(QAbstractAnimation::DeleteWhenStopped);
     layerIsVisible = !hide;
 <<<<<<< HEAD
+<<<<<<< HEAD
 }
 =======
 }
 >>>>>>> QT: require password to access wallet
+=======
+}
+>>>>>>> cdc8a216bef63d8a8c917d68bb9916a0aeb8e30a
