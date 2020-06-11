@@ -1,4 +1,4 @@
-#include <bootstrap.h>
+#include <downloader.h>
 
 #include <init.h>
 #include <logging.h>
@@ -7,8 +7,6 @@
 #include <util/miniunz.h>
 #include <curl/curl.h>
 #include <openssl/ssl.h>
-
-//bootstrap 
 
 /*
  * This xferinfo_data contains a callback function to be called
@@ -38,11 +36,11 @@ void set_xferinfo_data(void* d)
 
 void downloadFile(std::string url, const fs::path& target_file_path) {
 
-    LogPrintf("bootstrap: Downloading bootstrap from %s. \n", url);
+    LogPrintf("Download: Downloading from %s. \n", url);
 
     FILE *file = fsbridge::fopen(target_file_path, "wb");
     if( ! file )
-        throw std::runtime_error(strprintf("bootstrap: Download error: Unable to open output file for writing: %s.", target_file_path.c_str()));
+        throw std::runtime_error(strprintf("Download: error: Unable to open output file for writing: %s.", target_file_path.c_str()));
 
     CURL *curlHandle = curl_easy_init();
 
@@ -64,20 +62,20 @@ void downloadFile(std::string url, const fs::path& target_file_path) {
         curl_easy_cleanup(curlHandle);
         size_t len = strlen(errbuf);
         if(len)
-            throw std::runtime_error(strprintf("bootstrap: Download error: %s%s.", errbuf, ((errbuf[len - 1] != '\n') ? "\n" : "")));
+            throw std::runtime_error(strprintf("Download: error: %s%s.", errbuf, ((errbuf[len - 1] != '\n') ? "\n" : "")));
         else
-            throw std::runtime_error(strprintf("bootstrap: Download error: %s.", curl_easy_strerror(res)));
+            throw std::runtime_error(strprintf("Download: error: %s.", curl_easy_strerror(res)));
     }
 
     long response_code;
     curl_easy_getinfo(curlHandle, CURLINFO_RESPONSE_CODE, &response_code);
-    if( response_code != 200 ) 
-        throw std::runtime_error(strprintf("bootstrap: Download error. Server responded with a %d .", response_code));
+    if( response_code != 200 )
+        throw std::runtime_error(strprintf("Download: error: Server responded with a %d .", response_code));
 
     curl_easy_cleanup(curlHandle);
     fclose(file);
 
-    LogPrintf("bootstrap: Download successful.\n");
+    LogPrintf("Download: successful.\n");
 
     return;
 }
@@ -144,9 +142,7 @@ void DownloadBootstrap() {
     boost::filesystem::path pathBootstrapZip = GetDataDir() / "bootstrap_VRM.zip";
 
     downloadFile(BOOTSTRAP_URL, pathBootstrapZip);
-    extractBootstrap(pathBootstrapZip);
-    validateBootstrapContent();
-
+    extractBootstrap(pathBootstrapZip);BOOTSTRAP
     fBootstrap = true;
 
     LogPrintf("bootstrap: bootstrap process finished.\n");
